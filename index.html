@@ -338,75 +338,74 @@
 					return;
 				}
 
-				//user answer prompts
-				const question1 = "What is your name?";
-				const question2 = "What is your age?";
-				const question3 = "What is your favorite color?";
-				const question4 = "What is your favorite food?";
-				const question5 = "What is your favorite animal?";
-				const question6 = "What is your favorite movie?";
-				const question7 = "What is your favorite book?";
-				const question8 = "What is your favorite song?";
-				const question9 = "What is your favorite sport?";
-				const question10 = "What is your favorite hobby?";
-				const question11 = "What is your favorite place?";
-				const question12 = "What is your favorite thing to do?";
-				const question13 = "What is your favorite thing to eat?";
-				const question14 = "What is your favorite thing to drink?";
-				const question15 = "What is your favorite thing to watch?";
-				const question16 = "What is your favorite thing to listen to?";
-				const question17 = "What is your favorite thing to read?";
-				const question18 = "What is your favorite thing to play?";
-				const question19 = "What is your favorite thing to wear?";
-				const question20 = "What is your favorite thing to buy?";
-				const question21 = "What is your favorite thing to sell?";
-				const question22 = "What is your favorite thing to do for fun?";
-				const question23 = "What is your favorite thing to do for work?";
-				const question24 = "What is your favorite thing to do for money?";
-				const question25 = "What is your favorite thing to do for love?";
-				const question26 = "What is your favorite thing to do for family?";
-				const question27 = "What is your favorite thing to do for friends?";
-				const question28 = "What is your favorite thing to do for strangers?";
-				const question29 = "What is your favorite thing to do for yourself?";
-				const question30 = "What is your favorite thing to do for others?";
-				const question31 = "What is your favorite thing to do for the world?";
-				//add more characters
-				const question32 = "What is the name of your best friend?";
-				const question33 = "What is the name of your worst enemy?";
-				const question34 = "What is the name of your favorite person?";
-
 				const questionArray = [
-					question1,
-					question2,
-					question3,
-					question4,
-					question5,
-					question6,
-					question7,
-					question8,
-					question9,
-					question10,
-					question11,
-					question12,
-					question13,
-					question14,
-					question15,
-					question16,
-					question17,
-					question18,
-					question19,
-					question20,
-					question21,
-					question22,
-					question23,
-					question24,
-					question25,
-					question26,
-					question27,
-					question28,
-					question29,
-					question30,
+					"Who is the main character?",
+					"What is the main character's primary goal?",
+					"What are the main character's key traits or qualities?",
+					"Who is the antagonist and what motivates them?",
+					"What are the key characteristics of other supporting characters?",
+					"Where and when does the story take place? (Setting)",
+					"What is the central conflict of the story?",
+					"How does the main conflict develop? (Key events leading to the conflict)",
+					"How does the main character plan to overcome the conflict?",
+					"What challenges or obstacles does the main character face?",
+					"How do the main character's actions impact the story's progression?",
+					"What are the pivotal moments in the story?",
+					"How do the supporting characters influence the main conflict?",
+					"What is the climax of the story? (The peak of the main conflict)",
+					"How is the main conflict resolved?",
+					"What is the story's resolution or ending?",
+					"What themes or messages are explored in the story?",
+					"How does the setting influence the story's events?",
+					"What is the emotional journey of the main character?",
+					"How does the main character evolve throughout the story?",
+					"What is the main character's backstory?",
+					"What is the main character's motivation?",
+					"What is the main character's primary flaw?",
+					"What is the main character's greatest strength?",
+					"What is the main character's greatest weakness?",
+					"What is the main character's greatest fear?",
+					"What is the main character's greatest desire?",
+					"What is the main character's greatest regret?",
+					"What is the main character's greatest accomplishment?",
+					"What is the main character's greatest failure?",
+					"What is the main character's greatest secret?",
+					"What is the main character's greatest hope?",
+					"What is the main character's greatest dream?",
+					"What is the main character's greatest nightmare?",
+					"What is the main character's greatest challenge?",
+					"What is the main character's greatest obstacle?",
 				];
+				const questionArray2 = [
+					"what is your name?",
+					"what is your age?",
+					"what is your favorite color?",
+					"what is your favorite food?",
+					"what is your favorite animal?",
+					"what is your favorite movie?",
+					"what is your favorite book?",
+					"what is your favorite song?",
+					"what is your favorite sport?",
+					"what is your favorite game?",
+					"what is your favorite subject?",
+					"what is your favorite hobby?",
+					"what is your favorite place?",
+					"what is your favorite country?",
+					"what is your favorite city?",
+					"what is your favorite state?",
+					"what is your favorite planet?",
+					"what is your favorite car?",
+					"what is your favorite bike?",
+					"what is your favorite flower?",
+					"what is your favorite tree?",
+					"what is your favorite vegetable?",
+					"what is your favorite fruit?",
+					"what is your favorite drink?",
+					"what is your favorite restaurant?",
+					"what is your favorite store?",
+					"what is your favorite website?",
+					"what is your favorite app?",
+					];
 				//prompt user to answer 5 random questions and add to questionObject
 				for (let i = 0; i < 5; i++) {
 					//get random question from questionArray that hasn't been asked yet
