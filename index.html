@@ -277,8 +277,22 @@
 				<option value="action">Action</option>
 				<option value="adventure">Adventure</option>
 				<option value="comedy">Comedy</option>
+				<option value="satire">Satire</option>
+				<option value="tragedy">Tragedy</option>
+				<option value="mythology">Mythology</option>
+				<option value="science">Science</option>
+				<option value="crime">Crime</option>
 				<option value="historical">Historical</option>
 				<option value="children">Children</option>
+				<option value="nonfiction">Nonfiction</option>
+				<option value="biography">Biography</option>
+				<option value="autobiography">Autobiography</option>
+				<option value="poetry">Poetry</option>
+				<option value="essay">Essay</option>
+				<option value="comic">Comic</option>
+				<option value="graphicnovel">Graphic Novel</option>
+				<option value="cookbook">Cookbook</option>
+				<option value="diary">Diary</option>
 			</select>
 			<label for="">Begin Story</label>
 			<h3>Add Theme</h3>
@@ -355,6 +369,8 @@
 				const question28 = "What is your favorite thing to do for strangers?";
 				const question29 = "What is your favorite thing to do for yourself?";
 				const question30 = "What is your favorite thing to do for others?";
+				const question31 = "What is your favorite thing to do for the world?";
+
 				const questionArray = [
 					question1,
 					question2,
@@ -389,7 +405,10 @@
 				];
 				//prompt user to answer 5 random questions and add to questionObject
 				for (let i = 0; i < 5; i++) {
-					const question = questionArray[Math.floor(Math.random() * 30)];
+					//make sure question is not already in questionObject
+					while (questionObject[question] !== undefined) {
+						question = questionArray[Math.floor(Math.random() * 30)];
+					}
 					const answer = prompt(question);
 					questionObject[question] = answer;
 				}
