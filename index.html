@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Book Quest - AI Book Builder</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+				background-color: #f1f1f1;
+			}
+			.container {
+				width: 100%;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				background-color: #fff;
+			}
+			#header {
+				text-align: center;
+			}
+			#askAI {
+				margin-top: 20px;
+			}
+			#response {
+				margin-top: 20px;
+			}
+			#conversationMemory {
+				margin-top: 20px;
+			}
+			#conversationMemory textarea {
+				height: 200px;
+			}
+			#conversationMemory label {
+				display: block;
+			}
+			#askAI textarea {
+				width: 100%;
+				height: 200px;
+			}
+			#askAI label {
+				display: block;
+			}
+			#response textarea {
+				width: 100%;
+				height: 200px;
+			}
+			#response label {
+				display: block;
+			}
+			#header label {
+				display: block;
+			}
+			#header input {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#header button {
+				display: block;
+				margin: 0 auto;
+			}
+			#logo {
+				width: 100%;
+				max-width: 300px;
+				margin: 0 auto;
+				display: block;
+				border-radius: 50%;
+			}
+
+			#conversationMemory textarea {
+				width: 100%;
+				height: 200px;
+			}
+
+			#conversationMemory label {
+				display: block;
+			}
+
+			#askAI textarea {
+				width: 100%;
+				height: 200px;
+			}
+
+			#askAI label {
+				display: block;
+			}
+
+			#response textarea {
+				width: 100%;
+				height: 200px;
+			}
+
+			#response label {
+				display: block;
+			}
+
+			#header label {
+				display: block;
+			}
+
+			#header input {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			#gptModel {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#gptModel option {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			#clearMemoryButton {
+				display: block;
+				margin: 0 auto;
+			}
+
+			#clearMemoryButton:hover {
+				cursor: pointer;
+				background-color: #ddd;
+			}
+
+			#header button {
+				display: block;
+				margin: 0 auto;
+			}
+
+			#header h1 {
+				text-align: center;
+			}
+
+			#header label {
+				display: block;
+			}
+
+			#header input {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#header button {
+				display: block;
+				margin: 0 auto;
+			}
+			#logo {
+				width: 100%;
+				max-width: 300px;
+				margin: 0 auto;
+				display: block;
+				border-radius: 50%;
+			}
+
+			#changeKeys {
+				display: block;
+				margin: 0 auto;
+			}
+
+			#changeKeys:hover {
+				cursor: pointer;
+				background-color: #ddd;
+			}
+
+			#askButton {
+				display: block;
+				margin: 0 auto;
+			}
+
+			#askButton:hover {
+				cursor: pointer;
+				background-color: #ddd;
+			}
+
+			#saveButton {
+				display: block;
+				margin: 0 auto;
+			}
+
+			#saveButton:hover {
+				cursor: pointer;
+				background-color: #ddd;
+			}
+
+			select {
+				width: 100%;
+				padding: 16px 20px;
+				border: none;
+				border-radius: 4px;
+				background-color: #f1f1f1;
+			}
+			option {
+				width: 100%;
+				padding: 16px 20px;
+				border: none;
+				border-radius: 4px;
+				background-color: #f1f1f1;
+			}
+			select:focus {
+				outline: none;
+			}
+			#askButton {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#askButton:hover {
+				cursor: pointer;
+				background-color: #ddd;
+			}
+			#saveButton {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#saveButton:hover {
+				cursor: pointer;
+				background-color: #ddd;
+			}
+			#theme {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#theme:focus {
+				outline: none;
+			}
+			#apiKey {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#apiKey:focus {
+				outline: none;
+			}
+			#bookCategory {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			#bookCategory:focus {
+				outline: none;
+			}
+
+			@media screen and (max-width: 600px) {
+				.container {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container" id="header">
+			<h1>Book Quest - AI Book Builder</h1>
+			<!-- <img src="./brmountains.jpg" alt="" id="logo" /> -->
+			<label for="">API Key</label>
+			<input type="text" id="apiKey" />
+			<button id="saveButton">Save</button>
+			<button id="changeKeys" style="display: none">Change ApiKeys</button>
+		</div>
+		<div class="container" id="askAI">
+			<select name="" id="bookCategory">
+				<option value="null">Choose Category</option>
+				<option value="scifi">Sci-Fi</option>
+				<option value="fantasy">Fantasy</option>
+				<option value="romance">Romance</option>
+				<option value="mystery">Mystery</option>
+				<option value="thriller">Thriller</option>
+				<option value="horror">Horror</option>
+				<option value="western">Western</option>
+				<option value="drama">Drama</option>
+				<option value="action">Action</option>
+				<option value="adventure">Adventure</option>
+				<option value="comedy">Comedy</option>
+				<option value="historical">Historical</option>
+				<option value="children">Children</option>
+			</select>
+			<label for="">Begin Story</label>
+			<h3>Add Theme</h3>
+			<input placeholder="add theme" type="text" id="theme" />
+			<button id="askButton">Ask</button>
+		</div>
+		<div class="container" id="response">
+			<label for="">Response</label>
+			<textarea name="" id="answer" cols="30" rows="10"> </textarea>
+		</div>
+		<script>
+			let currentAnswer = "";
+
+			const theme = document.getElementById("theme");
+			const answer = document.getElementById("answer");
+			const conversation = document.getElementById("conversation");
+			const askButton = document.getElementById("askButton");
+			const saveButton = document.getElementById("saveButton");
+
+			saveButton.addEventListener("click", () => {
+				if (localStorage.getItem("apiKey") !== null) {
+					if (
+						!confirm("Are you sure you want to overwrite your current API key?")
+					) {
+						return;
+					}
+				}
+				localStorage.setItem("apiKey", document.getElementById("apiKey").value);
+				alert("API key saved");
+				document.getElementById("apiKey").value = "";
+			});
+
+			askButton.addEventListener("click", () => {
+				const theme = document.getElementById("theme").value;
+				const bookCategory = document.getElementById("bookCategory").value;
+				const questionObject = {};
+				if (theme === "") {
+					alert("Please add a theme");
+					return;
+				}
+				if (bookCategory === "null") {
+					alert("Please choose a category");
+					return;
+				}
+
+				//user answer prompts
+				const question1 = "What is your name?";
+				const question2 = "What is your age?";
+				const question3 = "What is your favorite color?";
+				const question4 = "What is your favorite food?";
+				const question5 = "What is your favorite animal?";
+				const question6 = "What is your favorite movie?";
+				const question7 = "What is your favorite book?";
+				const question8 = "What is your favorite song?";
+				const question9 = "What is your favorite sport?";
+				const question10 = "What is your favorite hobby?";
+				const question11 = "What is your favorite place?";
+				const question12 = "What is your favorite thing to do?";
+				const question13 = "What is your favorite thing to eat?";
+				const question14 = "What is your favorite thing to drink?";
+				const question15 = "What is your favorite thing to watch?";
+				const question16 = "What is your favorite thing to listen to?";
+				const question17 = "What is your favorite thing to read?";
+				const question18 = "What is your favorite thing to play?";
+				const question19 = "What is your favorite thing to wear?";
+				const question20 = "What is your favorite thing to buy?";
+				const question21 = "What is your favorite thing to sell?";
+				const question22 = "What is your favorite thing to do for fun?";
+				const question23 = "What is your favorite thing to do for work?";
+				const question24 = "What is your favorite thing to do for money?";
+				const question25 = "What is your favorite thing to do for love?";
+				const question26 = "What is your favorite thing to do for family?";
+				const question27 = "What is your favorite thing to do for friends?";
+				const question28 = "What is your favorite thing to do for strangers?";
+				const question29 = "What is your favorite thing to do for yourself?";
+				const question30 = "What is your favorite thing to do for others?";
+				const questionArray = [
+					question1,
+					question2,
+					question3,
+					question4,
+					question5,
+					question6,
+					question7,
+					question8,
+					question9,
+					question10,
+					question11,
+					question12,
+					question13,
+					question14,
+					question15,
+					question16,
+					question17,
+					question18,
+					question19,
+					question20,
+					question21,
+					question22,
+					question23,
+					question24,
+					question25,
+					question26,
+					question27,
+					question28,
+					question29,
+					question30,
+				];
+				//prompt user to answer 5 random questions and add to questionObject
+				for (let i = 0; i < 5; i++) {
+					const question = questionArray[Math.floor(Math.random() * 30)];
+					const answer = prompt(question);
+					questionObject[question] = answer;
+				}
+				getAnswer(JSON.stringify(questionObject), theme, bookCategory);
+			});
+
+			const openaiURL = "https://api.openai.com/v1/chat/completions";
+			const getAnswer = async (info, theme, bookCategory) => {
+				askButton.disabled = true;
+				askButton.innerHTML = "Asking...";
+				let query = `Theme: ${theme}|Info: ${info.trim()}|Category: ${bookCategory}`;
+				let gptModel = "gpt-3.5-turbo";
+
+				const messages = [
+					{
+						role: "system",
+						content: `You are a storywriter. Take the user info and theme and create story: ${query}`,
+					},
+				];
+				try {
+					const request = await fetch(openaiURL, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + localStorage.getItem("apiKey"),
+						},
+
+						body: JSON.stringify({
+							model: gptModel,
+							messages: messages,
+							temperature: 0.7,
+						}),
+					});
+					const response = await request.json();
+					const answer = response.choices[0].message.content;
+					currentAnswer = answer;
+
+					updateAnswer(answer);
+					askButton.disabled = false;
+					askButton.innerHTML = "Ask";
+				} catch (error) {
+					console.log(error);
+				}
+			};
+			const updateAnswer = (answer) => {
+				document.getElementById("answer").value = answer;
+			};
+
+			//check for query params apikey and store it in local storage
+			const urlParams = new URLSearchParams(window.location.search);
+			const apiKey = urlParams.get("apikey");
+			if (apiKey !== null) {
+				localStorage.setItem("apiKey", apiKey);
+				alert("API key saved");
+				//clear query params
+				window.history.replaceState({}, document.title, "/");
+			}
+			document.getElementById("changeKeys").addEventListener("click", () => {
+				localStorage.removeItem("apiKey");
+				document.getElementById("apiKey").style.display = "block";
+				document.getElementById("saveButton").style.display = "block";
+				document.getElementById("changeKeys").style.display = "none";
+			});
+			//if api key is saved, remove the api key input
+			if (localStorage.getItem("apiKey") !== null) {
+				document.getElementById("apiKey").style.display = "none";
+				document.getElementById("saveButton").style.display = "none";
+				document.getElementById("changeKeys").style.display = "block";
+			}
+		</script>
+	</body>
+</html>
