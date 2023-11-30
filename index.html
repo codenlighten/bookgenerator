@@ -405,10 +405,12 @@
 				];
 				//prompt user to answer 5 random questions and add to questionObject
 				for (let i = 0; i < 5; i++) {
-					//make sure question is not already in questionObject
-					while (questionObject[question] !== undefined) {
-						question = questionArray[Math.floor(Math.random() * 30)];
-					}
+					//get random question from questionArray that hasn't been asked yet
+					let question =
+						questionArray[Math.floor(Math.random() * questionArray.length)];
+					//remove question from questionArray
+					questionArray.splice(questionArray.indexOf(question), 1);
+
 					const answer = prompt(question);
 					questionObject[question] = answer;
 				}
